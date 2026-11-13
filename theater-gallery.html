@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گالری تئاتر شوکران | حانیه حدادی</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 20px;
+            font-family: Tahoma, Arial, sans-serif;
+            background: #171717;
+            color: #f5f0e8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            color: #c8b9a6;
+            line-height: 1.8;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 10px 20px;
+            color: #171717;
+            background: #d5b995;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .gallery-grid img {
+            display: block;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #292929;
+            cursor: zoom-in;
+        }
+
+        @media (max-width: 800px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid img {
+                height: auto;
+                max-height: 500px;
+                object-fit: contain;
+            }
+        }
+
+        .image-viewer {
+            width: 100%;
+            height: 100%;
+            max-width: none;
+            max-height: none;
+            border: none;
+            padding: 55px 15px 15px;
+            background: rgba(0, 0, 0, 0.94);
+            color: white;
+        }
+
+        .image-viewer::backdrop {
+            background: rgba(0, 0, 0, 0.94);
+        }
+
+        .image-viewer img {
+            display: block;
+            max-width: 95vw;
+            max-height: 85vh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            margin: auto;
+        }
+
+        .close-viewer {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 16px;
+            background: #d5b995;
+            color: #171717;
+            font-size: 16px;
+            font-family: inherit;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 id="galleryTitle">تئاتر شوکران</h1>
+
+            <p id="galleryIntro">
+                روایت لحظه‌ها از نگاه حانیه حدادی
+            </p>
+
+            <a href="../../index.html"
+               class="back-link"
+               id="backLink">
+                بازگشت به صفحه اصلی
+            </a>
+        </header>
+
+        <main class="gallery-grid" oncontextmenu="return false;">
+            <img src="IMG_8424.jpg" alt="عکس تئاتر شوکران ۱">
+            <img src="IMG_8420.png" alt="عکس تئاتر شوکران ۲">
+            <img src="IMG_8416.jpg" alt="عکس تئاتر شوکران ۳">
+            <img src="IMG_8414.png" alt="عکس تئاتر شوکران ۴">
+            <img src="IMG_8413.jpg" alt="عکس تئاتر شوکران ۵">
+            <img src="IMG_8412.jpg" alt="عکس تئاتر شوکران ۶">
+            <img src="IMG_8410.png" alt="عکس تئاتر شوکران ۷">
+            <img src="IMG_8404.jpg" alt="عکس تئاتر شوکران ۸">
+            <img src="IMG_8400.jpg" alt="عکس تئاتر شوکران ۹">
+            <img src="IMG_8397.jpg" alt="عکس تئاتر شوکران ۱۰">
+            <img src="IMG_8392.jpg" alt="عکس تئاتر شوکران ۱۱">
+            <img src="IMG_8391.jpg" alt="عکس تئاتر شوکران ۱۲">
+            <img src="IMG_8390.jpg" alt="عکس تئاتر شوکران ۱۳">
+            <img src="IMG_8389.png" alt="عکس تئاتر شوکران ۱۴">
+            <img src="IMG_8387.jpg" alt="عکس تئاتر شوکران ۱۵">
+            <img src="IMG_8386.jpg" alt="عکس تئاتر شوکران ۱۶">
+            <img src="IMG_8385.png" alt="عکس تئاتر شوکران ۱۷">
+            <img src="IMG_8384.png" alt="عکس تئاتر شوکران ۱۸">
+            <img src="IMG_8383.png" alt="عکس تئاتر شوکران ۱۹">
+        </main>
+
+        <dialog class="image-viewer" id="imageViewer">
+            <button class="close-viewer" id="closeViewer" type="button">
+                بستن ✕
+            </button>
+            <img id="largeImage" src="" alt="">
+        </dialog>
+    </div>
+
+    <script>
+        const translations = {
+            fa: {
+                title: "تئاتر شوکران",
+                intro: "روایت لحظه‌ها از نگاه حانیه حدادی",
+                back: "بازگشت به صفحه اصلی",
+                photo: "عکس تئاتر شوکران",
+                close: "بستن ✕"
+            },
+            en: {
+                title: "Shokaran Theatre",
+                intro: "Moments captured through the lens of Haniyeh Haddadi",
+                back: "Back to Home",
+                photo: "Shokaran Theatre photo",
+                close: "Close ✕"
+            },
+            it: {
+                title: "Teatro Shokaran",
+                intro: "Momenti raccontati attraverso l'obiettivo di Haniyeh Haddadi",
+                back: "Torna alla pagina principale",
+                photo: "Foto del teatro Shokaran",
+                close: "Chiudi ✕"
+            }
+        };
+
+        function applyLanguage(lang) {
+            if (!translations[lang]) {
+                lang = "fa";
+            }
+
+            document.documentElement.lang = lang;
+            document.documentElement.dir =
+                lang === "fa" ? "rtl" : "ltr";
+
+            document.getElementById("galleryTitle").textContent =
+                translations[lang].title;
+
+            document.getElementById("galleryIntro").textContent =
+                translations[lang].intro;
+
+            document.getElementById("backLink").textContent =
+                translations[lang].back;
+
+            document.getElementById("closeViewer").textContent =
+                translations[lang].close;
+
+            document.querySelectorAll(".gallery-grid img").forEach(
+                function (img, index) {
+                    img.alt = translations[lang].photo + " " + (index + 1);
+                }
+            );
+
+            document.title =
+                translations[lang].title + " | Haniyeh Haddadi";
+        }
+
+        let selectedLanguage = "fa";
+
+        try {
+            selectedLanguage =
+                localStorage.getItem("selectedLanguage") || "fa";
+        } catch (error) {
+            selectedLanguage = "fa";
+        }
+
+        applyLanguage(selectedLanguage);
+
+        const imageViewer = document.getElementById("imageViewer");
+        const largeImage = document.getElementById("largeImage");
+        const closeViewer = document.getElementById("closeViewer");
+
+        document.querySelectorAll(".gallery-grid img").forEach(function (photo) {
+            photo.addEventListener("click", function () {
+                largeImage.src = photo.src;
+                largeImage.alt = photo.alt;
+                imageViewer.showModal();
+            });
+        });
+
+        closeViewer.addEventListener("click", function () {
+            imageViewer.close();
+        });
+
+        imageViewer.addEventListener("click", function (event) {
+            if (event.target === imageViewer) {
+                imageViewer.close();
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && imageViewer.open) {
+                imageViewer.close();
+            }
+        });
+    </script>
+</body>
+</html>

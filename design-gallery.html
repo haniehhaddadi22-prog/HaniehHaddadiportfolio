@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گالری طراحی گرافیک | حانیه حدادی</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px 6%;
+            background: #171717;
+            color: #f5f0e8;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        header p {
+            color: #c8bba8;
+            line-height: 1.9;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 22px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            background: #242424;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.25s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.025);
+        }
+
+        .back-link {
+            display: block;
+            width: fit-content;
+            margin: 35px auto 10px;
+            padding: 12px 22px;
+            color: #171717;
+            background: #d6bd96;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+
+        dialog {
+            width: 90%;
+            max-width: 1000px;
+            max-height: 90vh;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #242424;
+        }
+
+        dialog::backdrop {
+            background: rgba(0, 0, 0, 0.88);
+        }
+
+        dialog img {
+            display: block;
+            max-width: 100%;
+            max-height: 75vh;
+            margin: auto;
+        }
+
+        dialog button {
+            display: block;
+            margin: 0 auto 10px;
+            padding: 8px 18px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 24px 5%;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .gallery img {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1 id="page-title">گالری طراحی گرافیک</h1>
+        <p id="page-description">
+            مجموعه‌ای از پوسترها و پروژه‌های طراحی گرافیک من
+        </p>
+    </header>
+
+    <main class="gallery" oncontextmenu="return false;">
+        <img src="design  (1).jpg" alt="نمونه طراحی گرافیک ۱">
+        <img src="design  (2).png" alt="نمونه طراحی گرافیک ۲">
+        <img src="design  (3).png" alt="نمونه طراحی گرافیک ۳">
+        <img src="design  (4).jpg" alt="نمونه طراحی گرافیک ۴">
+        <img src="design  (5).png" alt="نمونه طراحی گرافیک ۵">
+        <img src="design  (6).jpg" alt="نمونه طراحی گرافیک ۶">
+        <img src="design  (7).jpg" alt="نمونه طراحی گرافیک ۷">
+        <img src="design  (8).jpg" alt="نمونه طراحی گرافیک ۸">
+        <img src="design  (9).png" alt="نمونه طراحی گرافیک ۹">
+        <img src="design.png" alt="نمونه طراحی گرافیک ۱۰">
+    </main>
+
+    <a class="back-link" href="../../index.html" id="back-link">
+        بازگشت به صفحهٔ اصلی
+    </a>
+
+    <dialog id="image-viewer">
+        <button id="close-viewer" type="button">بستن ✕</button>
+        <img id="large-image" src="" alt="">
+    </dialog>
+
+    <script>
+        const viewer = document.getElementById("image-viewer");
+        const largeImage = document.getElementById("large-image");
+        const closeViewerBtn = document.getElementById("close-viewer");
+
+        document.querySelectorAll(".gallery img").forEach(function (img) {
+            img.addEventListener("click", function () {
+                largeImage.src = img.src;
+                largeImage.alt = img.alt;
+                viewer.showModal();
+            });
+        });
+
+        closeViewerBtn.addEventListener("click", function () {
+            viewer.close();
+        });
+
+        viewer.addEventListener("click", function (event) {
+            if (event.target === viewer) {
+                viewer.close();
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && viewer.open) {
+                viewer.close();
+            }
+        });
+
+        const translations = {
+            fa: {
+                title: "گالری طراحی گرافیک",
+                description: "مجموعه‌ای از پوسترها و پروژه‌های طراحی گرافیک من",
+                back: "بازگشت به صفحهٔ اصلی",
+                alt: "نمونه طراحی گرافیک",
+                close: "بستن ✕"
+            },
+            en: {
+                title: "Graphic Design Gallery",
+                description: "A collection of my posters and graphic design projects",
+                back: "Back to Home",
+                alt: "Graphic design sample",
+                close: "Close ✕"
+            },
+            it: {
+                title: "Galleria di Graphic Design",
+                description: "Una raccolta dei miei poster e progetti di grafica",
+                back: "Torna alla pagina principale",
+                alt: "Progetto di graphic design",
+                close: "Chiudi ✕"
+            }
+        };
+
+        let lang = "fa";
+        try {
+            lang = localStorage.getItem("selectedLanguage") || "fa";
+        } catch (error) {
+            lang = "fa";
+        }
+
+        if (!translations[lang]) {
+            lang = "fa";
+        }
+
+        document.documentElement.lang = lang;
+        document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
+        document.getElementById("page-title").textContent =
+            translations[lang].title;
+        document.getElementById("page-description").textContent =
+            translations[lang].description;
+        document.getElementById("back-link").textContent =
+            translations[lang].back;
+        closeViewerBtn.textContent = translations[lang].close;
+
+        document.querySelectorAll(".gallery img").forEach(function (img, index) {
+            img.alt = translations[lang].alt + " " + (index + 1);
+        });
+
+        document.title = translations[lang].title + " | Haniyeh Haddadi";
+    </script>
+
+</body>
+</html>
