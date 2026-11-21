@@ -371,9 +371,10 @@ nav a {
 }
 
 @media (max-width: 600px) {
-    .portfolio-section 
-    padding: 80px 7%;
-    background: rgba(241, 243, 245, 0.94);
+    .portfolio-section {
+        padding: 80px 7%;
+        background: rgba(241, 243, 245, 0.94);
+    }
 }
 
     .project-card {
