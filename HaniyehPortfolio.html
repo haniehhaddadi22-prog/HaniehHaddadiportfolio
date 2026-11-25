@@ -123,12 +123,35 @@ h2 {
   position: relative;
 }
 
-.hero-image img {
+
+.hero-image {
+  padding: 12px;
+  border: 1px solid var(--gold-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-slideshow {
+  position: relative;
   width: 100%;
   height: 440px;
-  object-fit: cover;
   background: #eee7da;
 }
+
+.hero-slideshow img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero-slideshow img.active {
+  opacity: 1;
+}
+
 
 .buttons {
   display: flex;
@@ -265,7 +288,7 @@ body[dir="ltr"] .card h3 {
     gap: 30px;
   }
 
-  .hero-image img { height: 350px; }
+.hero-slideshow { height: 350px; }
 
   .grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -325,9 +348,16 @@ body[dir="ltr"] .card h3 {
     </div>
   </div>
 
-  <div class="hero-image">
-    <img src="hero.JPG" alt="Haniyeh Haddadi photography">
+
+<div class="hero-image">
+  <div class="hero-slideshow">
+    <img src="hero.JPG" alt="Haniyeh Haddadi photography" class="active">
+    <img src="hero1.png" alt="Haniyeh Haddadi photography">
+    <img src="hero2.png" alt="Haniyeh Haddadi photography">
+    <img src="hero3.png" alt="Haniyeh Haddadi photography">
   </div>
+</div>
+
 </section>
 
 <section id="photography">
@@ -512,6 +542,16 @@ language.addEventListener("change", () => {
 const savedLanguage = localStorage.getItem("haniyeh-language") || "fa";
 language.value = savedLanguage;
 changeLanguage(savedLanguage);
+
+const slides = document.querySelectorAll(".hero-slideshow img");
+let currentSlide = 0;
+
+setInterval(() => {
+  slides[currentSlide].classList.remove("active");
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add("active");
+}, 4000);
+
 </script>
 
 </body>
