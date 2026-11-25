@@ -1,468 +1,518 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haniyeh | Photography & Graphic Design</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haniyeh Haddadi | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #f7f3eb;
+  --white: #fffdf8;
+  --gold: #a88b55;
+  --gold-light: #d7c49b;
+  --dark: #292820;
+  --muted: #777267;
+  --line: #ded5c5;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--dark);
+  font-family: 'Vazirmatn', sans-serif;
+  line-height: 1.8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1150px, 90%);
+  margin: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(247,243,235,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+nav {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  font: 600 25px 'Playfair Display', serif;
+  letter-spacing: 3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.nav-links a {
+  color: var(--muted);
+  transition: .2s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+select {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--dark);
+  font: inherit;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 65px;
+  align-items: center;
+  padding-top: 85px;
+  padding-bottom: 85px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+h1 {
+  font: 600 clamp(42px, 6vw, 75px)/1.2 'Playfair Display', serif;
+  margin: 20px 0;
+}
+
+h2 {
+  font: 600 clamp(30px, 4vw, 45px)/1.3 'Playfair Display', serif;
+  margin: 10px 0 18px;
+}
+
+.hero p, .intro {
+  color: var(--muted);
+  max-width: 580px;
+}
+
+.hero-image {
+  padding: 12px;
+  border: 1px solid var(--gold-light);
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  background: #eee7da;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  padding: 10px 22px;
+  transition: .2s;
+  font-size: 14px;
+}
+
+.button.primary {
+  background: var(--gold);
+  color: white;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+}
+
+section {
+  padding: 75px 0;
+  border-top: 1px solid var(--line);
+}
+
+.section-heading {
+  margin-bottom: 30px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  max-width: 650px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: var(--white);
+  padding: 10px;
+  border: 1px solid var(--line);
+  transition: .25s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px #57462915;
+}
+
+.card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  background: #eee7da;
+}
+
+.card h3 {
+  font: 600 19px 'Playfair Display', serif;
+  margin: 13px 8px 4px;
+}
+
+.card p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 8px 12px;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 50px;
+}
+
+.about-text {
+  font-size: 17px;
+  color: var(--muted);
+}
+
+.contact {
+  background: #eee7da;
+  padding: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+footer {
+  padding: 25px 0;
+  color: var(--muted);
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+body[dir="ltr"] {
+  font-family: Arial, sans-serif;
+}
+
+body[dir="ltr"] h1,
+body[dir="ltr"] h2,
+body[dir="ltr"] .card h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+@media(max-width:850px) {
+  nav {
+    padding: 15px 0;
+    flex-direction: column;
+  }
+
+  .nav-links { justify-content: center; }
+
+  .hero, .about {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .hero-image img { height: 350px; }
+
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media(max-width:550px) {
+  .grid { grid-template-columns: 1fr; }
+
+  .card img { height: 280px; }
+
+  section { padding: 55px 0; }
+
+  footer {
+    flex-direction: column;
+  }
+}
+</style>
 </head>
 
 <body>
-    <header class="site-header">
-        <a href="#home" class="logo">HANIYEH.</a>
 
-        <nav>
-            <a href="#home" data-i18n="home">خانه</a>
-            <a href="#photography" data-i18n="photography">عکاسی</a>
-            <a href="#graphic" data-i18n="graphic">طراحی گرافیک</a>
-            <a href="#about" data-i18n="about">درباره من</a>
-            <a href="#contact" data-i18n="contactNav">ارتباط با من</a>
-        </nav>
+<header>
+  <div class="container">
+    <nav>
+      <a href="index.html" class="logo">HANIYEH</a>
 
-        <label for="languageSelect" class="language-label">
-            <span class="visually-hidden" data-i18n="languageLabel">انتخاب زبان</span>
-            <select id="languageSelect" aria-label="انتخاب زبان">
-                <option value="fa">فارسی</option>
-                <option value="en">English</option>
-                <option value="it">Italiano</option>
-            </select>
-        </label>
-    </header>
+      <div class="nav-links">
+        <a href="#home" data-fa="خانه" data-en="Home" data-it="Home">خانه</a>
+        <a href="#photography" data-fa="عکاسی" data-en="Photography" data-it="Fotografia">عکاسی</a>
+        <a href="#design" data-fa="طراحی گرافیک" data-en="Graphic Design" data-it="Graphic Design">طراحی گرافیک</a>
+        <a href="#about" data-fa="درباره من" data-en="About" data-it="Chi sono">درباره من</a>
+        <a href="academic.html" data-fa="پروفایل آکادمیک" data-en="Academic Profile" data-it="Profilo accademico">پروفایل آکادمیک</a>
+        <a href="#contact" data-fa="ارتباط" data-en="Contact" data-it="Contatti">ارتباط</a>
+      </div>
 
-    <main>
-        <section class="hero" id="home">
-            <p class="eyebrow">PHOTOGRAPHY & GRAPHIC DESIGN</p>
+      <select id="language">
+        <option value="fa">فارسی</option>
+        <option value="en">English</option>
+        <option value="it">Italiano</option>
+      </select>
+    </nav>
+  </div>
+</header>
 
-            <div class="hero-title-fix">
-                <h1 data-i18n="heroTitle">
-                    لحظه‌ها را ثبت می‌کنم، ایده‌ها را به تصویر می‌کشم.
-                </h1>
-            </div>
+<main class="container">
 
-            <p class="intro" data-i18n="intro">
-                مجموعه‌ای از تجربه‌ها، نگاه من به تصویر
-                و پروژه‌های عکاسی و طراحی گرافیک.
-            </p>
+<section class="hero" id="home">
+  <div>
+    <div class="eyebrow" data-fa="عکاس و طراح گرافیک" data-en="PHOTOGRAPHER & GRAPHIC DESIGNER" data-it="FOTOGRAFA E GRAPHIC DESIGNER">عکاس و طراح گرافیک</div>
 
-            <div class="hero-buttons">
-                <a href="#photography" class="button button-dark" data-i18n="viewPhotos">
-                    مشاهده عکس‌ها
-                </a>
-                <a href="#graphic" class="button button-outline" data-i18n="viewDesigns">
-                    دیدن طرح‌ها
-                </a>
-            </div>
+    <h1 data-fa="روایت جهان، از دریچه تصویر" data-en="Stories through the lens" data-it="Storie attraverso l'obiettivo">روایت جهان، از دریچه تصویر</h1>
 
-            <div class="hero-image slideshow" id="heroSlideshow">
-                <img src="hero.JPG"
-     alt="نمونه منتخب عکاسی و طراحی من"
-     class="active">
+    <p data-fa="من حانیه حدادی هستم؛ هنرمندی با پیش‌زمینه هنرهای اسلامی و علاقه‌مند به عکاسی، طراحی گرافیک و روایت بصری." data-en="I am Haniyeh Haddadi, an artist with a background in Islamic Art and an interest in photography, graphic design and visual storytelling." data-it="Sono Haniyeh Haddadi, un'artista con una formazione in arte islamica e un interesse per la fotografia, il graphic design e la narrazione visiva.">من حانیه حدادی هستم؛ هنرمندی با پیش‌زمینه هنرهای اسلامی و علاقه‌مند به عکاسی، طراحی گرافیک و روایت بصری.</p>
 
-                <img src="hero1.png"
-                     alt="نمونه عکاسی دوم">
+    <div class="buttons">
+      <a class="button primary" href="#photography" data-fa="مشاهده آثار" data-en="View my work" data-it="Guarda i miei lavori">مشاهده آثار</a>
+      <a class="button" href="academic.html" data-fa="سوابق آکادمیک" data-en="Academic Profile" data-it="Profilo accademico">سوابق آکادمیک</a>
+    </div>
+  </div>
 
-                <img src="hero2.png"
-                     alt="نمونه عکاسی سوم">
+  <div class="hero-image">
+    <img src="hero.JPG" alt="Haniyeh Haddadi photography">
+  </div>
+</section>
 
-                <img src="hero3.png"
-                     alt="نمونه عکاسی چهارم">
-            </div>
-        </section>
+<section id="photography">
+  <div class="section-heading">
+    <div class="eyebrow" data-fa="پرتفولیوی منتخب" data-en="SELECTED WORK" data-it="LAVORI SELEZIONATI">پرتفولیوی منتخب</div>
+    <h2 data-fa="عکاسی" data-en="Photography" data-it="Fotografia">عکاسی</h2>
+    <p data-fa="نگاهی به فضاها، جزئیات و لحظه‌هایی که از دریچه دوربین ثبت شده‌اند." data-en="A selection of spaces, details and moments captured through my lens." data-it="Una selezione di spazi, dettagli e momenti catturati attraverso il mio obiettivo.">نگاهی به فضاها، جزئیات و لحظه‌هایی که از دریچه دوربین ثبت شده‌اند.</p>
+  </div>
 
-        <section class="portfolio-section" id="photography">
-            <p class="eyebrow">01 / PHOTOGRAPHY</p>
-
-            <h2 data-i18n="photoSectionTitle">روایت من از دنیای عکاسی</h2>
-            <p data-i18n="photoSectionIntro">پرتره‌ها و لحظه‌هایی که از نگاه من ثبت شده‌اند.</p>
-
-            <div class="project-grid">
-
-    <!-- عکس‌های مائده -->
-    <article class="project-card">
-        <img src="architecture1.jpg" alt="عکاسی معماری">
-        <h3 data-i18n="photoTitle1">روایت یک هنر</h3>
-        <p data-i18n="photoDesc1">عکاسی پانوراما</p>
+  <div class="grid">
+    <article class="card">
+      <img src="architecture1.jpg" alt="Architecture photography">
+      <h3 data-fa="عکاسی معماری" data-en="Architecture" data-it="Architettura">عکاسی معماری</h3>
+      <p data-fa="فرم، نور و فضا" data-en="Form, light and space" data-it="Forma, luce e spazio">فرم، نور و فضا</p>
     </article>
 
-    <article class="project-card">
-        <img src="architecture3.jpg" alt="عکاسی معماری سوم">
-        <h3 data-i18n="photoTitle2">نگاه به جزئیات</h3>
-        <p data-i18n="photoDesc2">عکاسی معماری</p>
+    <article class="card">
+      <img src="architecture2.jpg" alt="Architecture photography">
+      <h3 data-fa="نگاه شهری" data-en="Urban Perspectives" data-it="Prospettive urbane">نگاه شهری</h3>
+      <p data-fa="هندسه و ترکیب‌بندی" data-en="Geometry and composition" data-it="Geometria e composizione">هندسه و ترکیب‌بندی</p>
     </article>
 
-<article class="project-card">
-        <img src="architecture2.jpg" alt="عکاسی معماری دوم">
-        <h3>نگاه به ساختار</h3>
-        <p>عکاسی معماری</p>
-</article>
-
-    <!-- گالری پرتره -->
-    <article class="project-card">
-        <a href="gallery.html" class="project-link">
-            <img src="photo4.jpg"
-                 alt="نمونه عکاسی پرتره"
-                 data-i18n-alt="photoAlt4">
-
-            <h3 data-i18n="photoTitle4">روایت یک لحظه</h3>
-            <p data-i18n="photoDesc4">عکاسی پرتره</p>
-        </a>
+    <article class="card">
+      <img src="architecture3.jpg" alt="Architecture photography">
+      <h3 data-fa="جزئیات معماری" data-en="Architectural Details" data-it="Dettagli architettonici">جزئیات معماری</h3>
+      <p data-fa="زیبایی در جزئیات" data-en="Beauty in details" data-it="La bellezza nei dettagli">زیبایی در جزئیات</p>
     </article>
 
-    <!-- عکاسی خبری -->
-    <article class="project-card">
-        <img src="photo5.png" alt="نمونه عکاسی خبری" data-i18n-alt="photoAlt5">
-        <h3 data-i18n="photoTitle5">روایت یک لحظه</h3>
-        <p data-i18n="photoDesc5">عکاسی خبری</p>
+    <article class="card">
+      <img src="photo1.jpg" alt="Photography project">
+      <h3 data-fa="مجموعه عکاسی ۱" data-en="Photography Series 01" data-it="Serie fotografica 01">مجموعه عکاسی ۱</h3>
     </article>
 
-    <!-- عکاسی تئاتر -->
-    <article class="project-card">
-        <a href="theater-gallery.html" class="project-link">
-            <img src="photo6.png"
-                 alt="نمونه عکاسی تئاتر"
-                 data-i18n-alt="photoAlt6">
-
-            <h3 data-i18n="photoTitle6">روایت یک لحظه</h3>
-            <p data-i18n="photoDesc6">عکاسی تئاتر</p>
-        </a>
+    <article class="card">
+      <img src="photo2.jpg" alt="Photography project">
+      <h3 data-fa="مجموعه عکاسی ۲" data-en="Photography Series 02" data-it="Serie fotografica 02">مجموعه عکاسی ۲</h3>
     </article>
 
-</div>
-        </section>
+    <article class="card">
+      <img src="photo3.jpg" alt="Photography project">
+      <h3 data-fa="مجموعه عکاسی ۳" data-en="Photography Series 03" data-it="Serie fotografica 03">مجموعه عکاسی ۳</h3>
+    </article>
 
-        <section class="portfolio-section" id="graphic">
-            <p class="eyebrow">02 / GRAPHIC DESIGN</p>
+    <article class="card">
+      <img src="photo4.jpg" alt="Photography project">
+      <h3 data-fa="مجموعه عکاسی ۴" data-en="Photography Series 04" data-it="Serie fotografica 04">مجموعه عکاسی ۴</h3>
+    </article>
 
-            <h2 data-i18n="graphicSectionTitle">ایده‌هایی که شکل تصویر گرفته‌اند</h2>
-            <p data-i18n="graphicSectionIntro">مجموعه‌ای از آثار و پروژه‌های طراحی گرافیک من.</p>
+    <article class="card">
+      <img src="photo5.jpg" alt="Photography project">
+      <h3 data-fa="مجموعه عکاسی ۵" data-en="Photography Series 05" data-it="Serie fotografica 05">مجموعه عکاسی ۵</h3>
+    </article>
 
-            <div class="project-grid">
-                <article class="project-card">
-                    <img src="design1.jpg" alt="نمونه طراحی گرافیک اول" data-i18n-alt="graphicAlt1">
-                    <h3 data-i18n="graphicTitle1">تصویرسازی</h3>
-                    <p data-i18n="graphicDesc1">طراحی گرافیک</p>
-                </article>
+    <article class="card">
+      <img src="photo6.jpg" alt="Photography project">
+      <h3 data-fa="مجموعه عکاسی ۶" data-en="Photography Series 06" data-it="Serie fotografica 06">مجموعه عکاسی ۶</h3>
+    </article>
 
-                <article class="project-card">
-                    <a href="design-gallery.html" class="project-link">
-                        <img src="design2.jpg"
-                             alt="نمونه طراحی گرافیک دوم"
-                             data-i18n-alt="graphicAlt2">
+    <article class="card">
+      <img src="photo7.jpg" alt="Photography project">
+      <h3 data-fa="مجموعه عکاسی ۷" data-en="Photography Series 07" data-it="Serie fotografica 07">مجموعه عکاسی ۷</h3>
+    </article>
 
-                        <h3 data-i18n="graphicTitle2">ترکیب ایده و تصویر</h3>
-                        <p data-i18n="graphicDesc2">طراحی پوستر</p>
-                    </a>
-                </article>
+    <article class="card">
+      <img src="photo8.jpg" alt="Photography project">
+      <h3 data-fa="مجموعه عکاسی ۸" data-en="Photography Series 08" data-it="Serie fotografica 08">مجموعه عکاسی ۸</h3>
+    </article>
+  </div>
 
-                <article class="project-card">
-                    <img src="design3.jpg" alt="نمونه طراحی گرافیک سوم" data-i18n-alt="graphicAlt3">
-                    <h3 data-i18n="graphicTitle3">روایت بصری</h3>
-                    <p data-i18n="graphicDesc3">طراحی پوستر</p>
-                </article>
-            </div>
-        </section>
+  <div class="buttons">
+    <a class="button" href="gallery.html" data-fa="گالری کامل عکاسی" data-en="Full Photography Gallery" data-it="Galleria fotografica completa">گالری کامل عکاسی</a>
+    <a class="button" href="theater-gallery.html" data-fa="گالری عکاسی تئاتر" data-en="Theatre Photography" data-it="Fotografia teatrale">گالری عکاسی تئاتر</a>
+  </div>
+</section>
 
-        <section class="portfolio-section" id="about">
-            <p class="eyebrow">03 / ABOUT ME</p>
+<section id="design">
+  <div class="section-heading">
+    <div class="eyebrow" data-fa="ارتباط تصویری" data-en="VISUAL COMMUNICATION" data-it="COMUNICAZIONE VISIVA">ارتباط تصویری</div>
+    <h2 data-fa="طراحی گرافیک" data-en="Graphic Design" data-it="Graphic Design">طراحی گرافیک</h2>
+    <p data-fa="منتخبی از تجربه‌ها و پروژه‌های طراحی گرافیک." data-en="A selection of graphic design projects and explorations." data-it="Una selezione di progetti ed esplorazioni di graphic design.">منتخبی از تجربه‌ها و پروژه‌های طراحی گرافیک.</p>
+  </div>
 
-            <h2 data-i18n="aboutTitle">درباره من</h2>
+  <div class="grid">
+    <article class="card">
+      <img src="design1.jpg" alt="Graphic design project">
+      <h3 data-fa="طراحی گرافیک ۱" data-en="Graphic Design 01" data-it="Graphic Design 01">طراحی گرافیک ۱</h3>
+    </article>
 
-            <p data-i18n="aboutP1">
-                من حانیه حدادی هستم؛ عکاس و طراح گرافیک، با علاقه‌ای عمیق به دنیای تصویر و روایت‌های بصری.
-            </p>
+    <article class="card">
+      <img src="design2.jpg" alt="Graphic design project">
+      <h3 data-fa="طراحی گرافیک ۲" data-en="Graphic Design 02" data-it="Graphic Design 02">طراحی گرافیک ۲</h3>
+    </article>
 
-            <p data-i18n="aboutP2">
-                برای من، عکاسی فقط ثبت یک لحظه نیست؛ راهی برای دیدن جزئیاتی است که شاید در نگاه اول از چشم پنهان بمانند. در طراحی گرافیک نیز تلاش می‌کنم ایده‌ها را به تصویرهایی تبدیل کنم که معنا، احساس و هویت مشخصی داشته باشند.
-            </p>
+    <article class="card">
+      <img src="design3.jpg" alt="Graphic design project">
+      <h3 data-fa="طراحی گرافیک ۳" data-en="Graphic Design 03" data-it="Graphic Design 03">طراحی گرافیک ۳</h3>
+    </article>
 
-            <p data-i18n="aboutP3">
-                تجربه‌ام در هنرهای تجسمی و نگارگری، نگاه من به ترکیب‌بندی، جزئیات و زیبایی‌شناسی را شکل داده است. در پروژه‌های عکاسی و طراحی، به دنبال ایجاد تعادلی میان خلاقیت، دقت و روایت هستم.
-            </p>
+    <article class="card">
+      <img src="design (1).jpg" alt="Graphic design project">
+      <h3 data-fa="پروژه طراحی ۴" data-en="Design Project 04" data-it="Progetto di design 04">پروژه طراحی ۴</h3>
+    </article>
 
-            <p data-i18n="aboutP4">
-                در این وب‌سایت، مجموعه‌ای از پروژه‌ها و تجربه‌های من را می‌بینی؛ آثاری که هرکدام بخشی از مسیر هنری و نگاه شخصی من به تصویر را بازتاب می‌دهند.
-            </p>
-        </section>
+    <article class="card">
+      <img src="design (2).png" alt="Graphic design project">
+      <h3 data-fa="پروژه طراحی ۵" data-en="Design Project 05" data-it="Progetto di design 05">پروژه طراحی ۵</h3>
+    </article>
 
-        <section class="portfolio-section" id="contact">
-            <p class="eyebrow" data-i18n="contactEyebrow">04 / CONTACT</p>
+    <article class="card">
+      <img src="design (3).png" alt="Graphic design project">
+      <h3 data-fa="پروژه طراحی ۶" data-en="Design Project 06" data-it="Progetto di design 06">پروژه طراحی ۶</h3>
+    </article>
+  </div>
 
-            <h2 data-i18n="contactTitle">راه‌های ارتباطی</h2>
+  <div class="buttons">
+    <a class="button" href="design-gallery.html" data-fa="مشاهده همه طراحی‌ها" data-en="View All Designs" data-it="Vedi tutti i progetti">مشاهده همه طراحی‌ها</a>
+  </div>
+</section>
 
-            <p data-i18n="contactIntro">
-                برای سفارش عکاسی، طراحی گرافیک و همکاری با من در ارتباط باش.
-            </p>
+<section id="about">
+  <div class="about">
+    <div>
+      <div class="eyebrow" data-fa="درباره من" data-en="ABOUT ME" data-it="CHI SONO">درباره من</div>
+      <h2 data-fa="هنر، تجربه و کنجکاوی" data-en="Art, Experience & Curiosity" data-it="Arte, esperienza e curiosità">هنر، تجربه و کنجکاوی</h2>
+    </div>
 
-            <div class="contact-links">
-                <a href="https://www.instagram.com/haniyeh.portrait/"
-                   target="_blank" rel="noopener noreferrer"
-                   class="contact-link">
-                    📸 <span data-i18n="contactPhotography">اینستاگرام عکاسی</span>
-                </a>
+    <div class="about-text">
+      <p data-fa="من حانیه حدادی هستم، فارغ‌التحصیل رشته هنر اسلامی از دانشگاه علم و فرهنگ. علاقه‌مندی من در پیوند میان هنرهای سنتی و رسانه‌های تصویری معاصر شکل گرفته است." data-en="I am Haniyeh Haddadi, a graduate in Islamic Art from the University of Science and Culture. My interests explore the connection between traditional arts and contemporary visual media." data-it="Sono Haniyeh Haddadi, laureata in Arte Islamica presso la University of Science and Culture. I miei interessi esplorano il rapporto tra arti tradizionali e media visivi contemporanei.">من حانیه حدادی هستم، فارغ‌التحصیل رشته هنر اسلامی از دانشگاه علم و فرهنگ. علاقه‌مندی من در پیوند میان هنرهای سنتی و رسانه‌های تصویری معاصر شکل گرفته است.</p>
 
-                <a href="https://www.instagram.com/haniyehgraphic8/"
-                   target="_blank" rel="noopener noreferrer"
-                   class="contact-link">
-                    🎨 <span data-i18n="contactGraphic">اینستاگرام طراحی گرافیک</span>
-                </a>
+      <p data-fa="در کنار عکاسی و طراحی گرافیک، به نگارگری ایرانی، تذهیب و تاریخ هنر علاقه‌مندم. تلاش می‌کنم تجربه‌ها و نگاه شخصی‌ام را در قالب تصویر و طراحی به اشتراک بگذارم." data-en="Alongside photography and graphic design, I am interested in Persian miniature painting, illumination and art history. I aim to express my perspective through images and design." data-it="Oltre alla fotografia e al graphic design, mi interessano la miniatura persiana, la doratura e la storia dell'arte. Cerco di esprimere il mio punto di vista attraverso immagini e design.">در کنار عکاسی و طراحی گرافیک، به نگارگری ایرانی، تذهیب و تاریخ هنر علاقه‌مندم. تلاش می‌کنم تجربه‌ها و نگاه شخصی‌ام را در قالب تصویر و طراحی به اشتراک بگذارم.</p>
+    </div>
+  </div>
+</section>
 
-                <a href="https://t.me/HaD2080"
-                   target="_blank" rel="noopener noreferrer"
-                   class="contact-link">
-                    ✉️ <span data-i18n="contactTelegram">ارتباط در تلگرام</span>
-                </a>
-            </div>
-        </section>
-    </main>
+<section id="contact">
+  <div class="contact">
+    <div>
+      <div class="eyebrow" data-fa="ارتباط و همکاری" data-en="CONTACT & COLLABORATION" data-it="CONTATTI E COLLABORAZIONI">ارتباط و همکاری</div>
+      <h2 data-fa="در تماس باشیم" data-en="Let's Connect" data-it="Restiamo in contatto">در تماس باشیم</h2>
+    </div>
 
-    <footer>
-        <p data-i18n="footerText">
-            HANIYEH. — Photography & Graphic Design
-        </p>
-    </footer>
+    <div class="contact-links">
+      <a href="https://www.instagram.com/haniyeh.portrait/" target="_blank" rel="noopener">Photography Instagram</a>
+      <a href="https://www.instagram.com/haniyehgraphic8/" target="_blank" rel="noopener">Graphic Design Instagram</a>
+      <a href="https://t.me/HaD2080" target="_blank" rel="noopener">Telegram</a>
+    </div>
+  </div>
+</section>
 
-    <script>
-        document.addEventListener("contextmenu", function (event) {
-            if (event.target.tagName === "IMG") {
-                event.preventDefault();
-            }
-        });
+</main>
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const slideshow = document.getElementById("heroSlideshow");
+<footer class="container">
+  <span>© Haniyeh Haddadi</span>
+  <span data-fa="عکاسی و طراحی گرافیک" data-en="Photography & Graphic Design" data-it="Fotografia e Graphic Design">عکاسی و طراحی گرافیک</span>
+</footer>
 
-            if (!slideshow) return;
+<script>
+const translations = {
+  fa: { dir: "rtl" },
+  en: { dir: "ltr" },
+  it: { dir: "ltr" }
+};
 
-            const images = slideshow.querySelectorAll("img");
-            if (images.length < 2) return;
+const language = document.getElementById("language");
 
-            let currentIndex = 0;
+function changeLanguage(lang) {
+  document.documentElement.lang = lang;
+  document.documentElement.dir = translations[lang].dir;
 
-            setInterval(function () {
-                images[currentIndex].classList.remove("active");
-                currentIndex = (currentIndex + 1) % images.length;
-                images[currentIndex].classList.add("active");
-            }, 6000);
-        });
+  document.querySelectorAll("[data-fa]").forEach(element => {
+    const value = element.getAttribute("data-" + lang);
+    if (value !== null) element.textContent = value;
+  });
 
-        const translations = {
-            fa: {
-                languageLabel: "انتخاب زبان",
-                home: "خانه",
-                photography: "عکاسی",
-                graphic: "طراحی گرافیک",
-                about: "درباره من",
-                contactNav: "ارتباط با من",
-                heroTitle: "لحظه‌ها را ثبت می‌کنم، ایده‌ها را به تصویر می‌کشم.",
-                intro: "مجموعه‌ای از تجربه‌ها، نگاه من به تصویر و پروژه‌های عکاسی و طراحی گرافیک.",
-                viewPhotos: "مشاهده عکس‌ها",
-                viewDesigns: "دیدن طرح‌ها",
-                photoSectionTitle: "روایت من از دنیای عکاسی",
-                photoSectionIntro: "پرتره‌ها و لحظه‌هایی که از نگاه من ثبت شده‌اند.",
-                photoTitle1: "روایت یک هنر",
-                photoDesc1: "عکاسی پانوراما",
-                photoTitle2: "نگاه به جزئیات",
-                photoDesc2: "عکاسی هنری",
-                photoTitle3: "نگاه به جزئیات",
-                photoDesc3: "عکاسی معماری",
-                photoTitle4: "روایت یک لحظه",
-                photoDesc4: "عکاسی پرتره",
-                photoTitle5: "روایت یک لحظه",
-                photoDesc5: "عکاسی خبری",
-                photoTitle6: "روایت یک لحظه",
-                photoDesc6: "عکاسی تئاتر",
-                photoAlt1: "نمونه عکاسی پانوراما",
-                photoAlt2: "نمونه عکاسی هنری",
-                photoAlt3: "نمونه عکاسی معماری",
-                photoAlt4: "نمونه عکاسی پرتره",
-                photoAlt5: "نمونه عکاسی خبری",
-                photoAlt6: "نمونه عکاسی تئاتر",
-                graphicSectionTitle: "ایده‌هایی که شکل تصویر گرفته‌اند",
-                graphicSectionIntro: "مجموعه‌ای از آثار و پروژه‌های طراحی گرافیک من.",
-                graphicTitle1: "تصویرسازی",
-                graphicDesc1: "طراحی گرافیک",
-                graphicTitle2: "ترکیب ایده و تصویر",
-                graphicDesc2: "طراحی پوستر",
-                graphicTitle3: "روایت بصری",
-                graphicDesc3: "طراحی پوستر",
-                graphicAlt1: "نمونه تصویرسازی",
-                graphicAlt2: "نمونه طراحی پوستر",
-                graphicAlt3: "نمونه اثر با روایت بصری",
-                aboutTitle: "درباره من",
-                aboutP1: "من حانیه حدادی هستم؛ عکاس و طراح گرافیک، با علاقه‌ای عمیق به دنیای تصویر و روایت‌های بصری.",
-                aboutP2: "برای من، عکاسی فقط ثبت یک لحظه نیست؛ راهی برای دیدن جزئیاتی است که شاید در نگاه اول از چشم پنهان بمانند. در طراحی گرافیک نیز تلاش می‌کنم ایده‌ها را به تصویرهایی تبدیل کنم که معنا، احساس و هویت مشخصی داشته باشند.",
-                aboutP3: "تجربه‌ام در هنرهای تجسمی و نگارگری، نگاه من به ترکیب‌بندی، جزئیات و زیبایی‌شناسی را شکل داده است. در پروژه‌های عکاسی و طراحی، به دنبال ایجاد تعادلی میان خلاقیت، دقت و روایت هستم.",
-                aboutP4: "در این وب‌سایت، مجموعه‌ای از پروژه‌ها و تجربه‌های من را می‌بینی؛ آثاری که هرکدام بخشی از مسیر هنری و نگاه شخصی من به تصویر را بازتاب می‌دهند.",
-                footerText: "حانیه حدادی — عکاسی و طراحی گرافیک",
-                contactEyebrow: "04 / ارتباط",
-                contactTitle: "راه‌های ارتباطی",
-                contactIntro: "برای سفارش عکاسی، طراحی گرافیک و همکاری با من در ارتباط باش.",
-                contactPhotography: "اینستاگرام عکاسی",
-                contactGraphic: "اینستاگرام طراحی گرافیک",
-                contactTelegram: "ارتباط در تلگرام"
-            },
-            en: {
-                languageLabel: "Select language",
-                home: "Home",
-                photography: "Photography",
-                graphic: "Graphic Design",
-                about: "About Me",
-                contactNav: "Contact",
-                heroTitle: "I capture moments and bring ideas to life.",
-                intro: "A collection of my experiences, visual perspective, photography and graphic design projects.",
-                viewPhotos: "View Photography",
-                viewDesigns: "View Designs",
-                photoSectionTitle: "My Perspective on Photography",
-                photoSectionIntro: "Portraits and moments captured through my lens.",
-                photoTitle1: "A Story in Art",
-                photoDesc1: "Panoramic Photography",
-                photoTitle2: "Attention to Detail",
-                photoDesc2: "Fine Art Photography",
-                photoTitle3: "Attention to Detail",
-                photoDesc3: "Architectural Photography",
-                photoTitle4: "A Moment in Time",
-                photoDesc4: "Portrait Photography",
-                photoTitle5: "A Moment in Time",
-                photoDesc5: "News Photography",
-                photoTitle6: "A Moment in Time",
-                photoDesc6: "Theatre Photography",
-                photoAlt1: "Panoramic photography sample",
-                photoAlt2: "Fine art photography sample",
-                photoAlt3: "Architectural photography sample",
-                photoAlt4: "Portrait photography sample",
-                photoAlt5: "News photography sample",
-                photoAlt6: "Theatre photography sample",
-                graphicSectionTitle: "Ideas Brought to Life Through Images",
-                graphicSectionIntro: "A collection of my graphic design work and projects.",
-                graphicTitle1: "Illustration",
-                graphicDesc1: "Graphic Design",
-                graphicTitle2: "Where Ideas Meet Images",
-                graphicDesc2: "Poster Design",
-                graphicTitle3: "Visual Storytelling",
-                graphicDesc3: "Poster Design",
-                graphicAlt1: "Illustration sample",
-                graphicAlt2: "Poster design sample",
-                graphicAlt3: "Visual storytelling design sample",
-                aboutTitle: "About Me",
-                aboutP1: "I'm Haniyeh Haddadi, a photographer and graphic designer with a deep interest in visual art and storytelling.",
-                aboutP2: "For me, photography is more than capturing a moment; it's a way of noticing details that might otherwise go unseen. Through graphic design, I aim to turn ideas into visuals with meaning, emotion, and a distinct identity.",
-                aboutP3: "My background in visual arts and Persian miniature painting has shaped my approach to composition, detail, and aesthetics. In my photography and design projects, I seek a balance between creativity, precision, and storytelling.",
-                aboutP4: "This website brings together a selection of my projects and experiences, each reflecting part of my artistic journey and personal perspective on visual expression.",
-                footerText: "HANIYEH. — Photography & Graphic Design",
-                contactEyebrow: "04 / CONTACT",
-                contactTitle: "Get in Touch",
-                contactIntro: "Contact me for photography, graphic design, and collaborations.",
-                contactPhotography: "Photography Instagram",
-                contactGraphic: "Graphic Design Instagram",
-                contactTelegram: "Contact on Telegram"
-            },
-            it: {
-                languageLabel: "Seleziona la lingua",
-                home: "Home",
-                photography: "Fotografia",
-                graphic: "Graphic Design",
-                about: "Chi sono",
-                contactNav: "Contatti",
-                heroTitle: "Catturo momenti e do vita alle idee.",
-                intro: "Una raccolta delle mie esperienze, del mio sguardo visivo e dei miei progetti di fotografia e graphic design.",
-                viewPhotos: "Guarda le fotografie",
-                viewDesigns: "Scopri i progetti grafici",
-                photoSectionTitle: "Il mio sguardo sul mondo della fotografia",
-                photoSectionIntro: "Ritratti e momenti catturati attraverso il mio obiettivo.",
-                photoTitle1: "Un racconto d'arte",
-                photoDesc1: "Fotografia panoramica",
-                photoTitle2: "Attenzione ai dettagli",
-                photoDesc2: "Fotografia artistica",
-                photoTitle3: "Attenzione ai dettagli",
-                photoDesc3: "Fotografia architettonica",
-                photoTitle4: "Un momento da raccontare",
-                photoDesc4: "Fotografia di ritratto",
-                photoTitle5: "Un momento da raccontare",
-                photoDesc5: "Fotografia giornalistica",
-                photoTitle6: "Un momento da raccontare",
-                photoDesc6: "Fotografia teatrale",
-                photoAlt1: "Esempio di fotografia panoramica",
-                photoAlt2: "Esempio di fotografia artistica",
-                photoAlt3: "Esempio di fotografia architettonica",
-                photoAlt4: "Esempio di fotografia di ritratto",
-                photoAlt5: "Esempio di fotografia giornalistica",
-                photoAlt6: "Esempio di fotografia teatrale",
-                graphicSectionTitle: "Idee che prendono forma attraverso le immagini",
-                graphicSectionIntro: "Una raccolta dei miei lavori e progetti di graphic design.",
-                graphicTitle1: "Illustrazione",
-                graphicDesc1: "Graphic design",
-                graphicTitle2: "Incontro tra idee e immagini",
-                graphicDesc2: "Progettazione di poster",
-                graphicTitle3: "Narrazione visiva",
-                graphicDesc3: "Progettazione di poster",
-                graphicAlt1: "Esempio di illustrazione",
-                graphicAlt2: "Esempio di poster",
-                graphicAlt3: "Esempio di progetto di narrazione visiva",
-                aboutTitle: "Chi sono",
-                aboutP1: "Sono Haniyeh Haddadi, fotografa e graphic designer, con una profonda passione per le arti visive e la narrazione per immagini.",
-                aboutP2: "Per me, la fotografia non è solo catturare un momento, ma anche scoprire dettagli che potrebbero passare inosservati. Con il graphic design cerco di trasformare le idee in immagini ricche di significato, emozione e identità.",
-                aboutP3: "La mia esperienza nelle arti visive e nella miniatura persiana ha influenzato il mio approccio alla composizione, ai dettagli e all'estetica. Nei miei progetti cerco un equilibrio tra creatività, precisione e narrazione.",
-                aboutP4: "Questo sito raccoglie una selezione dei miei progetti e delle mie esperienze, ognuno dei quali riflette una parte del mio percorso artistico e del mio modo personale di interpretare le immagini.",
-                footerText: "HANIYEH. — Fotografia e Graphic Design",
-                contactEyebrow: "04 / CONTATTI",
-                contactTitle: "Contattami",
-                contactIntro: "Contattami per fotografia, grafica e collaborazioni.",
-                contactPhotography: "Instagram fotografia",
-                contactGraphic: "Instagram graphic design",
-                contactTelegram: "Contattami su Telegram"
-            }
-        };
+  localStorage.setItem("haniyeh-language", lang);
+}
 
-        const languageSelect = document.getElementById("languageSelect");
+language.addEventListener("change", () => {
+  changeLanguage(language.value);
+});
 
-        function applyLanguage(lang) {
-            if (!translations[lang]) {
-                lang = "fa";
-            }
+const savedLanguage = localStorage.getItem("haniyeh-language") || "fa";
+language.value = savedLanguage;
+changeLanguage(savedLanguage);
+</script>
 
-            document.documentElement.lang = lang;
-            document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
-
-            if (languageSelect) {
-                languageSelect.value = lang;
-                languageSelect.setAttribute("aria-label", translations[lang].languageLabel);
-            }
-
-            document.querySelectorAll("[data-i18n]").forEach(function (element) {
-                const key = element.dataset.i18n;
-                if (translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
-
-            document.querySelectorAll("[data-i18n-alt]").forEach(function (element) {
-                const key = element.dataset.i18nAlt;
-                if (translations[lang][key]) {
-                    element.alt = translations[lang][key];
-                }
-            });
-        }
-
-        let savedLang = "fa";
-        try {
-            savedLang = localStorage.getItem("selectedLanguage") || "fa";
-        } catch (error) {
-            savedLang = "fa";
-        }
-
-        applyLanguage(savedLang);
-
-        languageSelect.addEventListener("change", function () {
-            const lang = this.value;
-
-            try {
-                localStorage.setItem("selectedLanguage", lang);
-            } catch (error) {
-                // Ignore storage errors in private browsing
-            }
-
-            applyLanguage(lang);
-        });
-    </script>
 </body>
 </html>
