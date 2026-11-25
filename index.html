@@ -1,600 +1,234 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HANIYEH | Creative Portfolio</title>
 
-<title>حانیه حدادی | وب‌سایت شخصی</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* تنظیمات اصلی */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+  --cream: #f7f3eb;
+  --gold: #a88b55;
+  --dark: #292820;
+  --muted: #777267;
+  --line: #d9cdb7;
 }
+
+* { box-sizing: border-box; }
 
 body {
-    font-family: Tahoma, sans-serif;
-    background: #100d1c;
-    color: white;
-    overflow: hidden;
-    min-height: 100vh;
-    cursor: default;
+  margin: 0;
+  background: var(--cream);
+  color: var(--dark);
+  font-family: 'Vazirmatn', sans-serif;
+  min-height: 100vh;
 }
-
-/* پس زمینه */
-
-.background {
-    position: fixed;
-    inset: 0;
-    background:
-        radial-gradient(circle at 20% 30%, #39215c 0%, transparent 35%),
-        radial-gradient(circle at 80% 70%, #25205c 0%, transparent 35%),
-        #100d1c;
-    z-index: -2;
-}
-
-/* ذرات پس زمینه */
-
-#particles {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-}
-
-/* هدر */
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 8%;
+  height: 78px;
+  padding: 0 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
 }
 
 .logo {
-    font-size: 23px;
-    font-weight: bold;
-    color: #e6c7ff;
+  font: 600 25px 'Playfair Display', serif;
+  letter-spacing: 3px;
 }
 
-nav a {
-    color: #ddd;
-    text-decoration: none;
-    margin-right: 25px;
-    transition: 0.3s;
-    font-size: 14px;
+select {
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 9px 14px;
+  color: var(--dark);
+  border-radius: 20px;
+  font: inherit;
 }
 
-nav a:hover {
-    color: #d99aff;
+main {
+  min-height: calc(100vh - 145px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 50px 20px;
 }
 
-.language-select {
-    color: white;
-    background: #251a38;
-    border: 1px solid #a78bfa;
-    border-radius: 20px;
-    padding: 9px 12px;
-    font-family: Tahoma, sans-serif;
-    cursor: pointer;
-}
+.content { max-width: 780px; }
 
-/* بخش اصلی */
-
-.hero {
-    height: 75vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-    padding: 20px;
-}
-
-.tag {
-    color: #d69bff;
-    font-size: 14px;
-    margin-bottom: 25px;
-    letter-spacing: 2px;
+.eyebrow {
+  color: var(--gold);
+  letter-spacing: 4px;
+  font-size: 13px;
 }
 
 h1 {
-    font-size: clamp(38px, 7vw, 85px);
-    font-weight: 900;
-    background: linear-gradient(
-        90deg,
-        #ffffff,
-        #d69bff,
-        #ff9bd5
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 25px;
-    transition: transform 0.2s ease;
+  font: 600 clamp(65px, 13vw, 125px)/1.2 'Playfair Display', serif;
+  letter-spacing: 5px;
+  margin: 22px 0;
+}
+
+.line {
+  width: 85px;
+  height: 1px;
+  background: var(--gold);
+  margin: 25px auto;
 }
 
 .description {
-    color: #c4bdd1;
-    font-size: 16px;
-    line-height: 2.5;
-    max-width: 550px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 2;
+  max-width: 580px;
+  margin: auto;
 }
 
 .buttons {
-    margin-top: 35px;
-    display: flex;
-    gap: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 35px;
 }
 
-.btn {
-    padding: 14px 28px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-size: 14px;
-    transition: 0.3s;
+.button {
+  display: inline-block;
+  padding: 13px 25px;
+  border: 1px solid var(--gold);
+  color: var(--dark);
+  text-decoration: none;
+  transition: .25s;
 }
 
-.primary {
-    background: linear-gradient(90deg, #a855f7, #ec4899);
-    color: white;
+.button.primary {
+  background: var(--gold);
+  color: white;
 }
 
-.secondary {
-    border: 1px solid #a78bfa;
-    color: white;
+.button:hover {
+  transform: translateY(-3px);
 }
-
-.btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 25px #a855f766;
-}
-
-/* توپ متحرک */
-
-.ball {
-    width: 45px;
-    height: 45px;
-    position: fixed;
-    top: 200px;
-    left: 200px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #fff, #d946ef, #9333ea);
-    box-shadow: 0 0 25px #c026d3, 0 0 60px #9333ea;
-    z-index: 5;
-    cursor: pointer;
-}
-
-/* نوشته های شناور */
-
-.floating {
-    position: fixed;
-    color: #ffffff20;
-    font-size: 24px;
-    font-weight: bold;
-    pointer-events: none;
-    transition: transform 0.15s ease-out;
-    z-index: 0;
-}
-
-.text1 {
-    top: 25%;
-    right: 10%;
-}
-
-.text2 {
-    bottom: 20%;
-    left: 8%;
-}
-
-.text3 {
-    top: 65%;
-    right: 15%;
-}
-
-/* امتیاز */
-
-.score {
-    position: fixed;
-    bottom: 30px;
-    right: 40px;
-    color: #d9b4ff;
-    font-size: 13px;
-    z-index: 10;
-}
-
-/* فوتر */
 
 footer {
-    position: fixed;
-    bottom: 30px;
-    left: 40px;
-    font-size: 12px;
-    color: #81758f;
+  text-align: center;
+  padding: 20px;
+  color: var(--muted);
+  font-size: 12px;
+  border-top: 1px solid var(--line);
 }
 
-/* موبایل */
-
-@media(max-width: 650px) {
-
-    header {
-        padding: 25px 6%;
-    }
-
-    nav {
-        display: none;
-    }
-
-    .hero {
-        height: 80vh;
-    }
-
-    .description {
-        font-size: 14px;
-    }
-
-    .floating {
-        font-size: 17px;
-    }
-
-    .score {
-        bottom: 20px;
-        right: 15px;
-    }
-
-    footer {
-        bottom: 20px;
-        left: 15px;
-    }
-
+body[dir="ltr"] {
+  font-family: Arial, sans-serif;
 }
 
+@media(max-width:500px) {
+  header { padding: 0 5%; }
+  .description { font-size: 15px; }
+}
 </style>
 </head>
 
 <body>
 
-<div class="background"></div>
-
-<canvas id="particles"></canvas>
-
-<!-- هدر -->
-
 <header>
+  <div class="logo">HANIYEH</div>
 
-    <div class="logo">H.H</div>
-
-    <nav>
-        <a href="#" data-i18n="home">خانه</a>
-        <a href="#" data-i18n="about">درباره من</a>
-        <a href="#" data-i18n="portfolio">نمونه کارها</a>
-        <a href="#" data-i18n="contact">ارتباط با من</a>
-    </nav>
-
-    <select id="languageSelect" class="language-select" aria-label="Select language">
-        <option value="fa">فارسی</option>
-        <option value="en">English</option>
-        <option value="it">Italiano</option>
-    </select>
-
+  <select id="language" aria-label="Language">
+    <option value="fa">فارسی</option>
+    <option value="en">English</option>
+    <option value="it">Italiano</option>
+  </select>
 </header>
 
+<main>
+  <div class="content">
 
-<!-- نوشته های متحرک -->
+    <div class="eyebrow" id="eyebrow">
+      هنر · تصویر · روایت
+    </div>
 
-<div class="floating text1">Creativity</div>
-<div class="floating text2">Photography</div>
-<div class="floating text3">Design & Art</div>
+    <h1>HANIYEH</h1>
 
+    <div class="line"></div>
 
-<!-- بخش اصلی -->
-
-<section class="hero">
-
-    <div class="tag" data-i18n="welcome">به دنیای من خوش آمدید</div>
-
-    <h1 id="mainTitle" data-i18n="name">حانیه حدادی</h1>
-
-    <p class="description" data-i18n="description">
-        دنیای من جایی میان هنر، عکاسی و خلاقیت شکل می‌گیرد.
-        اینجا فضایی برای کشف ایده‌ها، تجربه‌های تازه
-        و روایت داستان‌ها از نگاه من است.
+    <p class="description" id="description">
+      فضایی برای دیدن جهان از دریچه عکاسی،
+      طراحی گرافیک و هنرهای تصویری.
     </p>
 
     <div class="buttons">
+      <a class="button primary" href="HaniyehPortfolio.html" id="portfolio">
+        ورود به پورتفولیو
+      </a>
 
-       <a href="HaniyehPortfolio.html" class="btn primary" data-i18n="viewPortfolio">
-    مشاهده نمایه من
-</a>
-
-        <a href="HaniyehPortfolio.html#about" class="btn secondary" data-i18n="moreAbout">
-            بیشتر درباره من
-        </a>
-
+      <a class="button" href="academic.html" id="academic">
+        پروفایل آکادمیک
+      </a>
     </div>
 
-</section>
+  </div>
+</main>
 
-
-<!-- توپ بازی -->
-
-<div class="ball" id="ball"></div>
-
-
-<!-- امتیاز -->
-
-<div class="score">
-    <span data-i18n="yourScore">امتیاز شما:</span>
-    <span id="score">0</span>
-    <span data-i18n="clickBall">| روی توپ کلیک کن!</span>
-</div>
-
-
-<footer>
-    © 2026 Hanieh Haddadi
+<footer id="footer">
+  عکاسی و طراحی گرافیک | حانیه حدادی
 </footer>
 
-
 <script>
-
-/* ترجمه کامل صفحه */
 const translations = {
-    fa: {
-        pageTitle: "حانیه حدادی | وب‌سایت شخصی",
-        home: "خانه",
-        about: "درباره من",
-        portfolio: "نمونه‌کارها",
-        contact: "ارتباط با من",
-        welcome: "به دنیای من خوش آمدید",
-        name: "حانیه حدادی",
-        description: "دنیای من جایی میان هنر، عکاسی و خلاقیت شکل می‌گیرد. اینجا فضایی برای کشف ایده‌ها، تجربه‌های تازه و روایت داستان‌ها از نگاه من است.",
-        viewPortfolio: "مشاهده نمایه من",
-        moreAbout: "بیشتر درباره من",
-        yourScore: "امتیاز شما:",
-        clickBall: "| روی توپ کلیک کن!"
-    },
-    en: {
-        pageTitle: "Haniyeh Haddadi | Personal Website",
-        home: "Home",
-        about: "About me",
-        portfolio: "Portfolio",
-        contact: "Contact",
-        welcome: "Welcome to my world",
-        name: "Haniyeh Haddadi",
-        description: "My world takes shape somewhere between art, photography, and creativity. This is a space to discover ideas, explore new experiences, and tell stories through my perspective.",
-        viewPortfolio: "View my portfolio",
-        moreAbout: "More about me",
-        yourScore: "Your score:",
-        clickBall: "| Click the ball!"
-    },
-    it: {
-        pageTitle: "Haniyeh Haddadi | Sito personale",
-        home: "Home",
-        about: "Chi sono",
-        portfolio: "Portfolio",
-        contact: "Contatti",
-        welcome: "Benvenuti nel mio mondo",
-        name: "Haniyeh Haddadi",
-        description: "Il mio mondo prende forma tra arte, fotografia e creatività. Questo è uno spazio per scoprire idee, vivere nuove esperienze e raccontare storie attraverso il mio sguardo.",
-        viewPortfolio: "Guarda il mio portfolio",
-        moreAbout: "Scopri di più su di me",
-        yourScore: "Il tuo punteggio:",
-        clickBall: "| Clicca sulla sfera!"
-    }
+  fa: {
+    dir: "rtl",
+    eyebrow: "هنر · تصویر · روایت",
+    description: "فضایی برای دیدن جهان از دریچه عکاسی، طراحی گرافیک و هنرهای تصویری.",
+    portfolio: "ورود به پورتفولیو",
+    academic: "پروفایل آکادمیک",
+    footer: "عکاسی و طراحی گرافیک | حانیه حدادی"
+  },
+  en: {
+    dir: "ltr",
+    eyebrow: "ART · IMAGE · STORY",
+    description: "A space for seeing the world through photography, graphic design, and visual arts.",
+    portfolio: "Explore Portfolio",
+    academic: "Academic Profile",
+    footer: "Photography & Graphic Design | Haniyeh Haddadi"
+  },
+  it: {
+    dir: "ltr",
+    eyebrow: "ARTE · IMMAGINE · RACCONTO",
+    description: "Uno spazio per osservare il mondo attraverso fotografia, graphic design e arti visive.",
+    portfolio: "Esplora il Portfolio",
+    academic: "Profilo Accademico",
+    footer: "Fotografia e Graphic Design | Haniyeh Haddadi"
+  }
 };
 
-const languageSelect = document.getElementById("languageSelect");
+const language = document.getElementById("language");
 
-function setLanguage(lang) {
-    const chosenLanguage = translations[lang] ? lang : "fa";
-    const words = translations[chosenLanguage];
+function changeLanguage(lang) {
+  const t = translations[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = t.dir;
 
-    document.documentElement.lang = chosenLanguage;
-    document.documentElement.dir = chosenLanguage === "fa" ? "rtl" : "ltr";
-    document.title = words.pageTitle;
+  document.getElementById("eyebrow").textContent = t.eyebrow;
+  document.getElementById("description").textContent = t.description;
+  document.getElementById("portfolio").textContent = t.portfolio;
+  document.getElementById("academic").textContent = t.academic;
+  document.getElementById("footer").textContent = t.footer;
 
-    document.querySelectorAll("[data-i18n]").forEach(element => {
-        const key = element.dataset.i18n;
-        if (words[key]) element.textContent = words[key];
-    });
-
-    languageSelect.value = chosenLanguage;
+  localStorage.setItem("haniyeh-language", lang);
 }
 
-languageSelect.addEventListener("change", function () {
-    const lang = this.value;
-
-    setLanguage(lang);
-
-    try {
-        localStorage.setItem("selectedLanguage", lang);
-    } catch (error) {
-        console.log("Language storage unavailable");
-    }
+language.addEventListener("change", () => {
+  changeLanguage(language.value);
 });
 
-
-
-/* حرکت توپ */
-
-const ball = document.getElementById("ball");
-
-let x = 200;
-let y = 200;
-
-let speedX = 2.5;
-let speedY = 2;
-
-let score = 0;
-
-let ballSize = 45;
-
-function animateBall() {
-
-    x += speedX;
-    y += speedY;
-
-    const maxX = Math.max(0, window.innerWidth - ballSize);
-    const maxY = Math.max(0, window.innerHeight - ballSize);
-
-    if (x >= maxX || x <= 0) {
-        speedX *= -1;
-        x = Math.max(0, Math.min(x, maxX));
-    }
-
-    if (y >= maxY || y <= 0) {
-        speedY *= -1;
-        y = Math.max(0, Math.min(y, maxY));
-    }
-
-    ball.style.left = x + "px";
-    ball.style.top = y + "px";
-
-    requestAnimationFrame(animateBall);
-
-}
-
-animateBall();
-
-
-/* بازی کلیک روی توپ */
-
-ball.addEventListener("click", function() {
-
-    score++;
-
-    document.getElementById("score").innerText = score;
-
-    // تغییر جهت توپ
-
-    speedX = Math.max(-9, Math.min(9, speedX * 1.15));
-    speedY = Math.max(-9, Math.min(9, speedY * 1.15));
-
-    // تغییر اندازه موقت توپ
-
-    ball.style.transform = "scale(1.5)";
-
-    setTimeout(() => {
-        ball.style.transform = "scale(1)";
-    }, 150);
-
-});
-
-
-/* حرکت نوشته ها با موس */
-
-const floatingTexts = document.querySelectorAll(".floating");
-
-document.addEventListener("mousemove", function(e) {
-
-    const mouseX = e.clientX / window.innerWidth;
-    const mouseY = e.clientY / window.innerHeight;
-
-    floatingTexts.forEach((text, index) => {
-
-        const movement = (index + 1) * 25;
-
-        const moveX = (mouseX - 0.5) * movement;
-        const moveY = (mouseY - 0.5) * movement;
-
-        text.style.transform =
-            `translate(${moveX}px, ${moveY}px)`;
-
-    });
-
-});
-
-
-/* حرکت عنوان اصلی */
-
-document.addEventListener("mousemove", function(e) {
-
-    const title = document.getElementById("mainTitle");
-
-    const moveX = (e.clientX / window.innerWidth - 0.5) * 15;
-
-    const moveY = (e.clientY / window.innerHeight - 0.5) * 10;
-
-    title.style.transform =
-        `translate(${moveX}px, ${moveY}px)`;
-
-});
-
-
-/* ذرات نورانی */
-
-const canvas = document.getElementById("particles");
-
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for (let i = 0; i < 65; i++) {
-
-    particles.push({
-
-        x: Math.random() * canvas.width,
-
-        y: Math.random() * canvas.height,
-
-        size: Math.random() * 2 + 1,
-
-        speed: Math.random() * 0.5 + 0.2
-
-    });
-
-}
-
-
-function animateParticles() {
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach(p => {
-
-        p.y -= p.speed;
-
-        if (p.y < 0) {
-            p.y = canvas.height;
-        }
-
-        ctx.beginPath();
-
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-
-        ctx.fillStyle = "rgba(220,170,255,0.6)";
-
-        ctx.fill();
-
-    });
-
-    requestAnimationFrame(animateParticles);
-
-}
-
-animateParticles();
-setLanguage("fa");
-
-
-/* تنظیم مجدد اندازه صفحه */
-
-window.addEventListener("resize", function() {
-
-    canvas.width = window.innerWidth;
-
-    canvas.height = window.innerHeight;
-
-});
-
+const savedLanguage = localStorage.getItem("haniyeh-language") || "fa";
+language.value = savedLanguage;
+changeLanguage(savedLanguage);
 </script>
 
 </body>
